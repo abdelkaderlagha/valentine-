@@ -1,118 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>A Kiss For You 💕</title>
-  <style>
+<meta charset="UTF-8">
+<title>For My Love ❤️</title>
+<style>
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #ff9ecb, #ffcce6);
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: white;
-      text-align: center;
-      overflow: hidden;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+        text-align: center;
+        color: white;
     }
 
-    .container {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 40px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    #text {
+        font-size: 2em;
+        width: 80%;
+        opacity: 0;
+        transition: opacity 2s ease-in-out;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
+    #final {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        animation: fadeIn 3s forwards;
     }
 
     button {
-      background-color: #ff4da6;
-      border: none;
-      padding: 15px 25px;
-      font-size: 1.2rem;
-      border-radius: 30px;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        background-color: white;
+        color: #ff6b81;
+        transition: transform 0.2s;
     }
 
     button:hover {
-      background-color: #ff1a8c;
-      transform: scale(1.05);
+        transform: scale(1.1);
     }
 
-    .kiss {
-      font-size: 2rem;
-      margin-top: 20px;
-      opacity: 0;
-      transition: opacity 1s ease;
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
-    .show {
-      opacity: 1;
-    }
-
-    .heart {
-      position: absolute;
-      font-size: 20px;
-      animation: float 5s linear infinite;
-      color: #ff4da6;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh);
-        opacity: 0;
-      }
-    }
-  </style>
+    #signature {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9em;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-  <h1>For My Future Wife 💖</h1>
-  <p>I have something for you... 😘</p>
-  <button onclick="sendKiss()">Click to receive your kiss 💋</button>
-  <div id="kiss" class="kiss">Mwahhhhh 💋💋💋</div>
+<div id="text"></div>
+
+<div id="final">
+    <h1>I love you ❤️</h1>
+    <h2>Will you be my Valentine?</h2>
+    <button onclick="answerYes()">Yes</button>
+    <button onclick="answerYes()">Of course Yes 😍</button>
 </div>
+<div id="signature">Made with love by Gadour ❤️</div>
 
 <script>
-  function sendKiss() {
-    document.getElementById('kiss').classList.add('show');
+const sentences = [
+    "Celine, from the first moment we met, something in me felt at home.",
+    "Every time I hear your voice, my day instantly becomes better.",
+    "Your smile is my favorite place in the world.",
+    "You don’t even realize how much happiness you bring into my life.",
+    "With you, even silence feels beautiful.",
+    "Celine, you are not just my girlfriend, you are my peace.",
+    "I love the way you understand me without me saying a word.",
+    "Every memory with you is a treasure I keep in my heart.",
+    "You make ordinary days feel magical.",
+    "When I think about the future, I only see you in it.",
+    "You are the reason I smile at my phone like an idiot.",
+    "Being with you feels like the safest place on earth.",
+    "I never believed in destiny until you walked into my life.",
+    "Your laugh is my favorite sound.",
+    "Celine, you are the best thing that ever happened to me.",
+    "I fall in love with you more and more every single day.",
+    "You are my happiness, my calm, my everything.",
+    "Even on my worst days, thinking of you makes it all okay.",
+    "Celine, you are my today and all of my tomorrows.",
+    "You make my heart feel full in a way I can’t explain.",
+    "I love how natural everything feels with you.",
+    "Life with you is exactly where I want to be.",
+    "You turned my life into something beautiful just by being in it.",
+    "Every moment with you is a moment I never want to forget.",
+    "Celine, loving you is the easiest thing I have ever done.",
+    "You are the reason I believe in love.",
+    "When I am with you, the world disappears.",
+    "Celine, you are my dream come true.",
+    "I didn’t know what I was missing until I met you.",
+    "You make my heart feel at peace.",
+    "Celine, you are my favorite person, always.",
+    "No matter where life takes us, I just want you by my side.",
+    "You are my sunshine on cloudy days.",
+    "Celine, you make everything in life feel lighter.",
+    "My heart chose you, and it keeps choosing you every day.",
+    "You are the most beautiful part of my life.",
+    "Celine, I am so grateful for you.",
+    "You are the love story I always wanted.",
+    "Every time I see you, I feel lucky.",
+    "Celine, you are my home."
+];
 
-    // create floating hearts
-    for (let i = 0; i < 20; i++) {
-      let heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-      document.body.appendChild(heart);
+const textDiv = document.getElementById("text");
+let index = 0;
 
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+function showSentence() {
+    if (index >= sentences.length) {
+        document.getElementById("text").style.display = "none";
+        document.getElementById("final").style.display = "flex";
+        return;
     }
-  }
+
+    textDiv.style.opacity = 0;
+
+    setTimeout(() => {
+        textDiv.innerText = sentences[index];
+        textDiv.style.opacity = 1;
+        index++;
+    }, 1500);
+
+    setTimeout(showSentence, 4500);
+}
+
+function answerYes() {
+    document.body.innerHTML = "<h1 style='font-size:3em'>Yaaay ❤️ I love you forever, Celine!</h1>";
+}
+
+showSentence();
 </script>
+
 
 </body>
 </html>
